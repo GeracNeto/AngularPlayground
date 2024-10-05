@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Compra } from './compra.model';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CarrinhoService {
   private carrinho: Compra[] = [];
-  private produtoAdicionado$ = new Subject<number>();
+  private produtoAdicionado$ = new BehaviorSubject<number>(0);
 
   adicionarProduto(produto: string) {
     const produtoCompra: Compra = {
@@ -20,7 +20,7 @@ export class CarrinhoService {
     this.produtoAdicionado$.next(this.carrinho.length);
   }
 
-  obterQtdCarrinho(){
+  obterQtdCarrinho() {
     return this.produtoAdicionado$.asObservable();
   }
 }
