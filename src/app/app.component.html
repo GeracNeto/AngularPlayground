@@ -1,6 +1,12 @@
 <label for="product">Add Product</label>
 <input type="text" id="product" [(ngModel)]="inputProduct" (keyup.enter)="addProduct()">
 
+@if (mostrarContador) {
 <div>
   <app-carrinho></app-carrinho>
+</div>
+}
+
+<div>
+  <button (click)="mostrarContador = !mostrarContador">{{mostrarContador === true ? "Mostrar" : "Esconder"}}</button>
 </div>

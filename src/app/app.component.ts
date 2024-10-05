@@ -13,6 +13,7 @@ import { CarrinhoService } from './compras/carrinho.service';
 })
 export class AppComponent implements OnInit {
   inputProduct = '';
+  mostrarContador = true;
 
   constructor(private carrinhoService: CarrinhoService) {}
 
