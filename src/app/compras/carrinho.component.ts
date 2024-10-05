@@ -1,29 +1,21 @@
 import { Component, OnDestroy } from '@angular/core';
 import { CarrinhoService } from './carrinho.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-carrinho',
   standalone: true,
+  imports: [AsyncPipe],
   template: `
     <span>Qtd Carrinho: </span>
-    <span>{{ qtdProduto }}</span>
+    <span>{{ qtdProduto$ | async }}</span>
   `,
 })
-export class CarrinhoComponent implements OnDestroy {
-  public qtdProduto = 0;
-
-  private sub = new Subscription();
+export class CarrinhoComponent {
+  public qtdProduto$ = new Observable();
 
   constructor(public carrinhoService: CarrinhoService) {
-    const subContador = carrinhoService
-      .obterQtdCarrinho()
-      .subscribe((qtd) => (this.qtdProduto = qtd));
-
-    this.sub.add(subContador);
-  }
-
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    this.qtdProduto$ = carrinhoService.obterQtdCarrinho();
   }
 }
