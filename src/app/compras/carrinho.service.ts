@@ -7,6 +7,10 @@ import { Compra } from './compra.model';
 export class CarrinhoService {
   private carrinho: Compra[] = [];
 
+  get carrinhoQtd(){
+    return this.carrinho.length;
+  }
+
   adicionarProduto(produto: string) {
     this.carrinho.push({
       produto: produto,
