@@ -9,7 +9,7 @@
             </tr>
         </thead>
         <tbody>
-            @for (music of musics; track music.id) {
+            @for (music of musics$ | async; track music.id) {
             <tr>
                 <td>{{ music.id }}</td>
                 <td>{{ music.author }}</td>
