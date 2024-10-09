@@ -1,0 +1,25 @@
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Author</th>
+                <th>Musica</th>
+                <th>...</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (music of musics; track music.id) {
+            <tr>
+                <td>{{ music.id }}</td>
+                <td>{{ music.author }}</td>
+                <td>{{ music.text }}</td>
+            </tr>
+            } @empty {
+            <tr>
+                <td colspan="3">There are no registered musics.</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
