@@ -15,4 +15,8 @@ export class MusicService {
     getMusics() {
         return this.httpClient.get<Music[]>(`${this.url}/musics`);
     }
+
+    registerNewMusic(music: Music){
+        return this.httpClient.post<Music>(`${this.url}/musics`, music);
+    }
 }

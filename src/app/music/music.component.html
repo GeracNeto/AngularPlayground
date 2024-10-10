@@ -1,4 +1,23 @@
 <div class="container">
+    <form>
+        <div>
+            <label for="id">ID</label>
+            <input type="number" disabled [(ngModel)]="id" id="id" name="id">
+        </div>
+
+        <div>
+            <label for="author">Author</label>
+            <input type="text" disable [(ngModel)]="author" id="author" name="author">
+        </div>
+
+        <div>
+            <label for="music">Music</label>
+            <input type="text" disable [(ngModel)]="music" id="music" name="music">
+        </div>
+
+        <button type="submit" (click)="registerNewMusic()">Criar</button>
+    </form>
+
     <table>
         <thead>
             <tr>
