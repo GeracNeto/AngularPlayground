@@ -16,7 +16,11 @@ export class MusicService {
         return this.httpClient.get<Music[]>(`${this.url}/musics`);
     }
 
-    registerNewMusic(music: Music){
+    registerNewMusic(music: Music) {
         return this.httpClient.post<Music>(`${this.url}/musics`, music);
+    }
+
+    editMusic(music: Music) {
+        return this.httpClient.put<Music>(`${this.url}/musics/${music.id}`, music)
     }
 }

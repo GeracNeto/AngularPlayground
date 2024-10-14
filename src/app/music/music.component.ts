@@ -30,10 +30,30 @@ export class MusicComponent {
     this.musics$ = this.musicService.getMusics();
   }
 
-  registerNewMusic() {
+  actionForm() {
     if (!this.music || !this.author) return;
 
+    if (this.id) {
+      this.updateMusic()
+      return
+    }
+
     this.musicService.registerNewMusic({
+      author: this.author,
+      text: this.music
+    }).subscribe(() => this.getRegisteredMusics())
+  }
+
+  editMusic(music: Music) {
+    this.id = music.id!.toString()
+
+    this.music = music.text
+    this.author = music.author
+  }
+
+  updateMusic() {
+    this.musicService.editMusic({
+      id: this.id,
       author: this.author,
       text: this.music
     }).subscribe(() => this.getRegisteredMusics())
