@@ -58,4 +58,8 @@ export class MusicComponent {
       text: this.music
     }).subscribe(() => this.getRegisteredMusics())
   }
+
+  deleteMusic(id: string) {
+    this.musicService.deleteMusic(id).subscribe(() => this.getRegisteredMusics())
+  }
 }

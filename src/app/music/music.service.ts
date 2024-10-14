@@ -23,4 +23,8 @@ export class MusicService {
     editMusic(music: Music) {
         return this.httpClient.put<Music>(`${this.url}/musics/${music.id}`, music)
     }
+
+    deleteMusic(id: string) {
+        return this.httpClient.delete(`${this.url}/musics/${id}`)
+    }
 }

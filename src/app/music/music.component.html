@@ -35,7 +35,10 @@
                 <td>{{ music.id }}</td>
                 <td>{{ music.author }}</td>
                 <td>{{ music.text }}</td>
-                <td (click)="editMusic(music)"><span>Alterar</span></td>
+                <td>
+                    <span (click)="editMusic(music)">Alterar</span>
+                    <span (click)="deleteMusic(music.id!)">Deletar</span>
+                </td>
             </tr>
             } @empty {
             <tr>
