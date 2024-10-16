@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { LoggerService } from './logger.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CalculadorService {
-  constructor() {}
+  constructor(private loggerService: LoggerService) { }
 
   calculate(num1: number, num2: number, operation: string) {
     switch (operation) {
@@ -17,6 +18,7 @@ export class CalculadorService {
       case 'mult':
         return num1 * num2;
       default:
+        this.loggerService.log("non-existent operation");
         return null;
     }
   }

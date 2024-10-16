@@ -1,13 +1,23 @@
 import { TestBed } from '@angular/core/testing';
 
 import { CalculadorService } from './calculadora.service';
+import { LoggerService } from './logger.service';
 
 describe('CalculadoraService', () => {
   let service: CalculadorService;
+  let loggerSpy: any;
 
   beforeEach(() => {
+    loggerSpy = jasmine.createSpyObj('LoggerService', ['log'])
+
     TestBed.configureTestingModule({
-      providers: [CalculadorService],
+      providers: [
+        CalculadorService,
+        {
+          provide: LoggerService,
+          useValue: loggerSpy,
+        },
+      ],
     });
     service = TestBed.inject(CalculadorService);
   });
@@ -46,5 +56,15 @@ describe('CalculadoraService', () => {
     const result = service.calculate(5, 5, 'mult');
 
     expect(result).toBe(25, 'expected result should be 25');
+  });
+
+  it('non-existent operation', () => {
+    expect(service).toBeTruthy();
+
+    const result = service.calculate(5, 5, 'n/a');
+
+    expect(result).toBeNull();
+
+    expect(loggerSpy.log).toHaveBeenCalledTimes(1)
   });
 });
