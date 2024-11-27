@@ -1,0 +1,10 @@
+<ul class="mt-3">
+    <li *ngFor="let ingredient of ingredients" class="mt-2">
+        <span class="text-dark">{{ingredient.amount}}</span> - 
+        <strong>{{ingredient.name}}</strong>
+        <button 
+        class="btn btn-sm btn-danger ms-2"
+        style="--bs-btn-padding-y: .2rem"
+        >Remover</button>
+    </li>
+</ul>
